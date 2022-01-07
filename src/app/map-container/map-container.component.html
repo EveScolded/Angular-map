@@ -1,9 +1,10 @@
 <google-map #map height="800px" width="90%">
   <map-marker-clusterer [imagePath]="markerClustererImagePath">
     <map-marker
-      *ngFor="let marker of markers"
+      *ngFor="let marker of markers; let i = index"
       [position]="marker.position"
       [icon]="marker.iconColor"
+      (mapClick)="openDialog(vehicles.objects[i])"
     ></map-marker>
   </map-marker-clusterer>
 </google-map>

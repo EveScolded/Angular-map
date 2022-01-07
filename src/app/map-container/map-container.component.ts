@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Vehicles } from '../vehicles/vehicles';
+import { Vehicle, Vehicles } from '../vehicles/vehicles';
 import { VehicleMock } from '../vehicles/vehicles.mock';
 import { VehiclesService } from '../vehicles/vehicles.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogDetailsComponent } from '../dialog-details/dialog-details.component';
 
 @Component({
   selector: 'app-map-container',
@@ -9,11 +11,11 @@ import { VehiclesService } from '../vehicles/vehicles.service';
   styleUrls: ['./map-container.component.scss'],
 })
 export class MapContainerComponent implements OnInit {
-  private vehicles: Vehicles;
+  public vehicles: Vehicles;
   public markers: any[] = [];
   @ViewChild('map') map: any;
 
-  constructor(private vehicleService: VehicleMock) {
+  constructor(private vehicleService: VehicleMock, public dialog: MatDialog) {
     this.vehicleService.getVehicles().subscribe((vehicles: Vehicles) => {
       this.vehicles = vehicles;
       this.addMarkers();
@@ -58,6 +60,14 @@ export class MapContainerComponent implements OnInit {
     let listener = google.maps.event.addListener(this.map, 'idle', () => {
       this.map.setZoom(8);
       google.maps.event.removeListener(listener);
+    });
+  }
+
+  openDialog(veh: Vehicle) {
+    this.dialog.open(DialogDetailsComponent, {
+      data: {
+        vehicle: veh,
+      },
     });
   }
 
