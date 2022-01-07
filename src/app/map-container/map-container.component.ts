@@ -31,6 +31,10 @@ export class MapContainerComponent implements OnInit {
           lat: veh.location.latitude,
           lng: veh.location.longitude,
         },
+        iconColor:
+          veh.status === 'AVAILABLE'
+            ? '../assets/car-green64x64.png'
+            : '../assets/car-grayscale64x64.png',
       });
     });
   }
@@ -49,7 +53,6 @@ export class MapContainerComponent implements OnInit {
       bounds.extend(marker.getPosition() as any);
     }
 
-    // //now fit the map to the newly inclusive bounds
     this.map.fitBounds(bounds);
 
     let listener = google.maps.event.addListener(this.map, 'idle', () => {

@@ -3,6 +3,7 @@
     <map-marker
       *ngFor="let marker of markers"
       [position]="marker.position"
+      [icon]="marker.iconColor"
     ></map-marker>
   </map-marker-clusterer>
 </google-map>

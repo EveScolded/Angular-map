@@ -47,7 +47,7 @@ export class VehicleMock {
         batteryLevelPct: 86,
         reservationEnd: null,
         reservation: null,
-        status: 'AVAILABLE',
+        status: 'UNAVAILABLE',
         locationDescription: null,
         address: null,
         mapColor: { rgb: 'ffffff', alpha: 0.5 },
