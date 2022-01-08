@@ -10,15 +10,23 @@ import { VehicleMock } from './vehicles/vehicles.mock';
 import { DialogDetailsComponent } from './dialog-details/dialog-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
-  declarations: [AppComponent, MapContainerComponent, DialogDetailsComponent],
+  declarations: [
+    AppComponent,
+    MapContainerComponent,
+    DialogDetailsComponent,
+    LoadingSpinnerComponent,
+  ],
   imports: [
     BrowserModule,
     GoogleMapsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
   ],
   providers: [VehiclesService, VehicleMock, MatDialogModule],
   bootstrap: [AppComponent],

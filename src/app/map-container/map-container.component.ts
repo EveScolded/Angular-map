@@ -13,6 +13,7 @@ import { DialogDetailsComponent } from '../dialog-details/dialog-details.compone
 export class MapContainerComponent implements OnInit {
   public vehicles: Vehicles;
   public markers: any[] = [];
+  public showSpinner: boolean = true;
   @ViewChild('map') map: any;
 
   constructor(private vehicleService: VehicleMock, public dialog: MatDialog) {
@@ -20,6 +21,7 @@ export class MapContainerComponent implements OnInit {
       this.vehicles = vehicles;
       this.addMarkers();
       this.setCenter();
+      this.showSpinner = false;
     });
   }
 
@@ -57,10 +59,10 @@ export class MapContainerComponent implements OnInit {
 
     this.map.fitBounds(bounds);
 
-    let listener = google.maps.event.addListener(this.map, 'idle', () => {
-      this.map.setZoom(8);
-      google.maps.event.removeListener(listener);
-    });
+    // let listener = google.maps.event.addListener(this.map, 'idle', () => {
+    //   this.map.setZoom(8);
+    //   google.maps.event.removeListener(listener);
+    // });
   }
 
   openDialog(veh: Vehicle) {
@@ -71,5 +73,7 @@ export class MapContainerComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.showSpinner = true;
+  }
 }
