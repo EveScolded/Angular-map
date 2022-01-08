@@ -3,5 +3,12 @@
 }
 
 .show {
-  display: block;
+  display: flex;
+  position: absolute;
+}
+
+.content {
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }

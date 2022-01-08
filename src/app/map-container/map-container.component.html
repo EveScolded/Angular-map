@@ -1,16 +1,19 @@
-<loading-spinner [show]="showSpinner"></loading-spinner>
-<google-map
-  [ngClass]="showSpinner ? 'hide' : 'show'"
-  #map
-  height="800px"
-  width="90%"
->
-  <map-marker-clusterer [imagePath]="markerClustererImagePath">
-    <map-marker
-      *ngFor="let marker of markers; let i = index"
-      [position]="marker.position"
-      [icon]="marker.iconColor"
-      (mapClick)="openDialog(vehicles.objects[i])"
-    ></map-marker>
-  </map-marker-clusterer>
-</google-map>
+<div class="content">
+  <loading-spinner [show]="showSpinner"></loading-spinner>
+  <div [ngClass]="showSpinner ? 'hide' : 'show'">
+    <app-filter-container
+      [isAvaliable]="avaliableFilterIsOn"
+      (isAvaliableChange)="funkcja($event)"
+    ></app-filter-container>
+    <google-map #map>
+      <map-marker-clusterer [imagePath]="markerClustererImagePath">
+        <map-marker
+          *ngFor="let marker of markers; let i = index"
+          [position]="marker.position"
+          [icon]="marker.iconColor"
+          (mapClick)="openDialog(vehicles.objects[i])"
+        ></map-marker>
+      </map-marker-clusterer>
+    </google-map>
+  </div>
+</div>

@@ -12,6 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FilterContainerComponent } from './filter-container/filter-container.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MapContainerComponent,
     DialogDetailsComponent,
     LoadingSpinnerComponent,
+    FilterContainerComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +31,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     BrowserAnimationsModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatSlideToggleModule,
+    FormsModule,
   ],
   providers: [VehiclesService, VehicleMock, MatDialogModule],
   bootstrap: [AppComponent],

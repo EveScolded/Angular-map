@@ -14,6 +14,7 @@ export class MapContainerComponent implements OnInit {
   public vehicles: Vehicles;
   public markers: any[] = [];
   public showSpinner: boolean = true;
+  public avaliableFilterIsOn: boolean = false;
   @ViewChild('map') map: any;
 
   constructor(private vehicleService: VehicleMock, public dialog: MatDialog) {
@@ -28,18 +29,26 @@ export class MapContainerComponent implements OnInit {
   markerClustererImagePath =
     'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m';
 
+  funkcja(isAvaliable: boolean) {
+    this.avaliableFilterIsOn = isAvaliable;
+    this.addMarkers();
+  }
+
   addMarkers() {
+    this.markers = [];
     this.vehicles.objects.forEach((veh) => {
-      this.markers.push({
-        position: {
-          lat: veh.location.latitude,
-          lng: veh.location.longitude,
-        },
-        iconColor:
-          veh.status === 'AVAILABLE'
-            ? '../assets/car-green64x64.png'
-            : '../assets/car-grayscale64x64.png',
-      });
+      if (!this.avaliableFilterIsOn || veh.status === 'AVAILABLE') {
+        this.markers.push({
+          position: {
+            lat: veh.location.latitude,
+            lng: veh.location.longitude,
+          },
+          iconColor:
+            veh.status === 'AVAILABLE'
+              ? '../assets/car-green64x64.png'
+              : '../assets/car-grayscale64x64.png',
+        });
+      }
     });
   }
 
