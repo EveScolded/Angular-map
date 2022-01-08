@@ -3,7 +3,7 @@
   <div [ngClass]="showSpinner ? 'hide' : 'show'">
     <app-filter-container
       [isAvaliable]="avaliableFilterIsOn"
-      (isAvaliableChange)="funkcja($event)"
+      (onFiltersChange)="onFiltersChange($event)"
     ></app-filter-container>
     <google-map #map>
       <map-marker-clusterer [imagePath]="markerClustererImagePath">

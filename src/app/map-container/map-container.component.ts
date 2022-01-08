@@ -29,7 +29,7 @@ export class MapContainerComponent implements OnInit {
   markerClustererImagePath =
     'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m';
 
-  funkcja(isAvaliable: boolean) {
+  onFiltersChange(isAvaliable: boolean) {
     this.avaliableFilterIsOn = isAvaliable;
     this.addMarkers();
   }

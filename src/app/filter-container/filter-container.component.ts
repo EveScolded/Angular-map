@@ -7,10 +7,10 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 })
 export class FilterContainerComponent implements OnInit {
   @Input() isAvaliable!: boolean;
-  @Output() isAvaliableChange = new EventEmitter<boolean>();
+  @Output() onFiltersChange = new EventEmitter<boolean>();
 
   checkAvaliability() {
-    this.isAvaliableChange.emit((this.isAvaliable = !this.isAvaliable));
+    this.onFiltersChange.emit((this.isAvaliable = !this.isAvaliable));
   }
   constructor() {}
 
