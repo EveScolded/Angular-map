@@ -4,6 +4,7 @@ import { VehicleMock } from '../vehicles/vehicles.mock';
 import { VehiclesService } from '../vehicles/vehicles.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogDetailsComponent } from '../dialog-details/dialog-details.component';
+import { Filters } from '../filter-container/filter-container.component';
 
 @Component({
   selector: 'app-map-container',
@@ -15,6 +16,7 @@ export class MapContainerComponent implements OnInit {
   public markers: any[] = [];
   public showSpinner: boolean = true;
   public avaliableFilterIsOn: boolean = false;
+  public sliderBatteryLevel: number = 50;
   @ViewChild('map') map: any;
 
   constructor(private vehicleService: VehicleMock, public dialog: MatDialog) {
@@ -29,15 +31,19 @@ export class MapContainerComponent implements OnInit {
   markerClustererImagePath =
     'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m';
 
-  onFiltersChange(isAvaliable: boolean) {
-    this.avaliableFilterIsOn = isAvaliable;
+  onFiltersChange(filters: Filters) {
+    this.avaliableFilterIsOn = filters.isAvaliable;
+    this.sliderBatteryLevel = filters.batteryLevel;
     this.addMarkers();
   }
 
   addMarkers() {
     this.markers = [];
     this.vehicles.objects.forEach((veh) => {
-      if (!this.avaliableFilterIsOn || veh.status === 'AVAILABLE') {
+      if (
+        (!this.avaliableFilterIsOn || veh.status === 'AVAILABLE') &&
+        veh.batteryLevelPct >= this.sliderBatteryLevel
+      ) {
         this.markers.push({
           position: {
             lat: veh.location.latitude,

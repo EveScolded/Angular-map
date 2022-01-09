@@ -14,6 +14,7 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FilterContainerComponent } from './filter-container/filter-container.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -32,6 +33,7 @@ import { FormsModule } from '@angular/forms';
     MatDialogModule,
     MatProgressSpinnerModule,
     MatSlideToggleModule,
+    MatSliderModule,
     FormsModule,
   ],
   providers: [VehiclesService, VehicleMock, MatDialogModule],

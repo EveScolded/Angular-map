@@ -71,7 +71,7 @@ export class VehicleMock {
           contentType: null,
         },
         rangeKm: 193,
-        batteryLevelPct: 98,
+        batteryLevelPct: 48,
         reservationEnd: null,
         reservation: null,
         status: 'AVAILABLE',

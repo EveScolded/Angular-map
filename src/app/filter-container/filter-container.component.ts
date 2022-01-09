@@ -1,5 +1,9 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
+export interface Filters {
+  isAvaliable: boolean;
+  batteryLevel: number;
+}
 @Component({
   selector: 'app-filter-container',
   templateUrl: './filter-container.component.html',
@@ -7,11 +11,27 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 })
 export class FilterContainerComponent implements OnInit {
   @Input() isAvaliable!: boolean;
-  @Output() onFiltersChange = new EventEmitter<boolean>();
+  @Input() batteryLevel!: number;
+  @Output() onFiltersChange = new EventEmitter<Filters>();
 
   checkAvaliability() {
-    this.onFiltersChange.emit((this.isAvaliable = !this.isAvaliable));
+    this.onFiltersChange.emit({
+      isAvaliable: (this.isAvaliable = !this.isAvaliable),
+      batteryLevel: this.batteryLevel,
+    });
   }
+
+  checkBatteryLevel() {
+    this.onFiltersChange.emit({
+      batteryLevel: this.batteryLevel,
+      isAvaliable: this.isAvaliable,
+    });
+  }
+
+  formatLabel(value: number) {
+    return value + '%';
+  }
+
   constructor() {}
 
   ngOnInit(): void {}

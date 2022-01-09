@@ -1,3 +1,17 @@
 <mat-slide-toggle (click)="checkAvaliability()"
   >Show only avaliable vehicles</mat-slide-toggle
 >
+
+<div>
+  <label>Battery Level</label>
+  <mat-slider
+    thumbLabel
+    [displayWith]="formatLabel"
+    step="1"
+    min="0"
+    max="100"
+    aria-label="units"
+    (click)="checkBatteryLevel()"
+    [(ngModel)]="batteryLevel"
+  ></mat-slider>
+</div>

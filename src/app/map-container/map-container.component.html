@@ -3,6 +3,7 @@
   <div [ngClass]="showSpinner ? 'hide' : 'show'">
     <app-filter-container
       [isAvaliable]="avaliableFilterIsOn"
+      [batteryLevel]="sliderBatteryLevel"
       (onFiltersChange)="onFiltersChange($event)"
     ></app-filter-container>
     <google-map #map>
