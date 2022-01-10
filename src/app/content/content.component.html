@@ -1,0 +1,20 @@
+<loading-spinner [show]="showSpinner"></loading-spinner>
+<div [ngClass]="showSpinner ? 'hide' : 'show'">
+  <app-filter-container
+    class="filter-container"
+    [isAvaliable]="avaliableFilterIsOn"
+    [batteryLevel]="sliderBatteryLevel"
+    (onFiltersChange)="onFiltersChange($event)"
+  ></app-filter-container>
+
+  <google-map height="100vh" width="100%" #map>
+    <map-marker-clusterer [imagePath]="markerClustererImagePath">
+      <map-marker
+        *ngFor="let marker of markers; let i = index"
+        [position]="marker.position"
+        [icon]="marker.iconColor"
+        (mapClick)="openDialog(vehicles.objects[i])"
+      ></map-marker>
+    </map-marker-clusterer>
+  </google-map>
+</div>

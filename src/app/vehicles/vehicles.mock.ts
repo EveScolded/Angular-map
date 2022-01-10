@@ -90,7 +90,7 @@ export class VehicleMock {
 
   getVehicles(): Observable<Vehicles> {
     let o = new Observable<Vehicles>((subscriber) => {
-      setTimeout(() => subscriber.next(this.vehicles), 1500);
+      setTimeout(() => subscriber.next(this.vehicles), 500);
     });
     return o;
   }

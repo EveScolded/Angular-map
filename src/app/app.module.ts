@@ -4,7 +4,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { MapContainerComponent } from './map-container/map-container.component';
+import { ContentComponent } from './content/content.component';
 import { VehiclesService } from './vehicles/vehicles.service';
 import { VehicleMock } from './vehicles/vehicles.mock';
 import { DialogDetailsComponent } from './dialog-details/dialog-details.component';
@@ -20,7 +20,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    MapContainerComponent,
+    ContentComponent,
     DialogDetailsComponent,
     LoadingSpinnerComponent,
     FilterContainerComponent,

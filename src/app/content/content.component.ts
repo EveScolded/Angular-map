@@ -7,11 +7,11 @@ import { DialogDetailsComponent } from '../dialog-details/dialog-details.compone
 import { Filters } from '../filter-container/filter-container.component';
 
 @Component({
-  selector: 'app-map-container',
-  templateUrl: './map-container.component.html',
-  styleUrls: ['./map-container.component.scss'],
+  selector: 'app-content',
+  templateUrl: './content.component.html',
+  styleUrls: ['./content.component.scss'],
 })
-export class MapContainerComponent implements OnInit {
+export class ContentComponent implements OnInit {
   public vehicles: Vehicles;
   public markers: any[] = [];
   public showSpinner: boolean = true;

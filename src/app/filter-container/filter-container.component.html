@@ -1,9 +1,8 @@
-<mat-slide-toggle (click)="checkAvaliability()"
+<mat-slide-toggle class="filter" (click)="checkAvaliability()"
   >Show only avaliable vehicles</mat-slide-toggle
 >
 
-<div>
-  <label>Battery Level</label>
+<div class="filter">
   <mat-slider
     thumbLabel
     [displayWith]="formatLabel"
@@ -14,4 +13,5 @@
     (click)="checkBatteryLevel()"
     [(ngModel)]="batteryLevel"
   ></mat-slider>
+  <label>Minimum battery level</label>
 </div>
