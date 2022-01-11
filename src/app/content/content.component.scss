@@ -10,6 +10,17 @@
   width: 100%;
 }
 
+.loading-spinner {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  left: 50%;
+  margin-left: -50px;
+}
+
 .filter-container {
   padding: 10px;
   display: flex;
@@ -22,7 +33,7 @@
   @media (min-width: 321px) {
     z-index: 2;
     position: absolute;
-    top: 80px;
+    top: 10px;
     left: 10px;
     background-color: rgba(44, 44, 44, 0.808);
     color: white;

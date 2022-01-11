@@ -1,5 +1,5 @@
-<loading-spinner [show]="showSpinner"></loading-spinner>
-<div [ngClass]="showSpinner ? 'hide' : 'show'">
+<loading-spinner class="loading-spinner" [show]="showSpinner"></loading-spinner>
+<div [ngClass]="showSpinner ? 'hide-content' : 'show-content'">
   <app-filter-container
     class="filter-container"
     [isAvaliable]="avaliableFilterIsOn"

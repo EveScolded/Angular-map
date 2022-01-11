@@ -5,6 +5,7 @@ import { VehiclesService } from '../vehicles/vehicles.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogDetailsComponent } from '../dialog-details/dialog-details.component';
 import { Filters } from '../filter-container/filter-container.component';
+import { GoogleMap } from '@angular/google-maps';
 
 @Component({
   selector: 'app-content',
@@ -17,7 +18,7 @@ export class ContentComponent implements OnInit {
   public showSpinner: boolean = true;
   public avaliableFilterIsOn: boolean = false;
   public sliderBatteryLevel: number = 50;
-  @ViewChild('map') map: any;
+  @ViewChild('map') map: GoogleMap;
 
   constructor(private vehicleService: VehicleMock, public dialog: MatDialog) {
     this.vehicleService.getVehicles().subscribe((vehicles: Vehicles) => {
@@ -73,7 +74,6 @@ export class ContentComponent implements OnInit {
     }
 
     this.map.fitBounds(bounds);
-
     // let listener = google.maps.event.addListener(this.map, 'idle', () => {
     //   this.map.setZoom(8);
     //   google.maps.event.removeListener(listener);
