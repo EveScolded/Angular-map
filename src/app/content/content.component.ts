@@ -18,6 +18,7 @@ export class ContentComponent implements OnInit {
   public showSpinner: boolean = true;
   public avaliableFilterIsOn: boolean = false;
   public sliderBatteryLevel: number = 50;
+  public checkedVehicleType: string = 'ALL';
   @ViewChild('map') map: GoogleMap;
 
   constructor(private vehicleService: VehicleMock, public dialog: MatDialog) {
@@ -35,6 +36,7 @@ export class ContentComponent implements OnInit {
   onFiltersChange(filters: Filters) {
     this.avaliableFilterIsOn = filters.isAvaliable;
     this.sliderBatteryLevel = filters.batteryLevel;
+    this.checkedVehicleType = filters.vehicleType;
     this.addMarkers();
   }
 
@@ -43,7 +45,9 @@ export class ContentComponent implements OnInit {
     this.vehicles.objects.forEach((veh) => {
       if (
         (!this.avaliableFilterIsOn || veh.status === 'AVAILABLE') &&
-        veh.batteryLevelPct >= this.sliderBatteryLevel
+        veh.batteryLevelPct >= this.sliderBatteryLevel &&
+        (veh.type === this.checkedVehicleType ||
+          this.checkedVehicleType === 'ALL')
       ) {
         this.markers.push({
           position: {
