@@ -17,17 +17,24 @@ export class ContentComponent implements OnInit {
   public markers: any[] = [];
   public showSpinner: boolean = true;
   public avaliableFilterIsOn: boolean = false;
-  public sliderBatteryLevel: number = 50;
+  public sliderBatteryLevel: number = 0;
   public checkedVehicleType: string = 'ALL';
+  public showError: boolean = false;
   @ViewChild('map') map: GoogleMap;
 
   constructor(private vehicleService: VehicleMock, public dialog: MatDialog) {
-    this.vehicleService.getVehicles().subscribe((vehicles: Vehicles) => {
-      this.vehicles = vehicles;
-      this.addMarkers();
-      this.setCenter();
-      this.showSpinner = false;
-    });
+    this.vehicleService.getVehicles().subscribe(
+      (vehicles: Vehicles) => {
+        this.vehicles = vehicles;
+        this.addMarkers();
+        this.setCenter();
+        this.showSpinner = false;
+      },
+      (error) => {
+        this.showError = true;
+        this.showSpinner = false;
+      }
+    );
   }
 
   markerClustererImagePath =
@@ -78,10 +85,6 @@ export class ContentComponent implements OnInit {
     }
 
     this.map.fitBounds(bounds);
-    // let listener = google.maps.event.addListener(this.map, 'idle', () => {
-    //   this.map.setZoom(8);
-    //   google.maps.event.removeListener(listener);
-    // });
   }
 
   openDialog(veh: Vehicle) {

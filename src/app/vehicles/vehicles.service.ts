@@ -13,7 +13,6 @@ export class VehiclesService {
       {
         headers: {
           'x-ctx-organization-id': '38c6047f-d9fd-496b-b4d6-27785499c6d7',
-          'Access-Control-Allow-Origin': '*',
         },
       }
     );

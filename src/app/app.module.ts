@@ -17,6 +17,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -36,8 +37,8 @@ import { FormsModule } from '@angular/forms';
     MatSlideToggleModule,
     MatSelectModule,
     MatSliderModule,
-
     FormsModule,
+    MatProgressBarModule,
   ],
   providers: [VehiclesService, VehicleMock, MatDialogModule],
   bootstrap: [AppComponent],

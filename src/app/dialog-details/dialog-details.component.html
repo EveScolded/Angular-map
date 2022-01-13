@@ -1,8 +1,20 @@
 <h1 mat-dialog-title>Vehicle Details</h1>
 <div mat-dialog-content>
   <div class="important-details">
-    <p>Status: {{ data.vehicle.status }}</p>
+    <p>
+      Status:
+      <span
+        [ngClass]="
+          data.vehicle.status === 'AVAILABLE' ? 'available' : 'unavailable'
+        "
+        >{{ data.vehicle.status }}
+      </span>
+    </p>
     <p>Battery level: {{ data.vehicle.batteryLevelPct }}%</p>
+    <mat-progress-bar
+      mode="determinate"
+      value="{{ data.vehicle.batteryLevelPct }}"
+    ></mat-progress-bar>
   </div>
   <div>
     <p>Plates number: {{ data.vehicle.platesNumber }}</p>

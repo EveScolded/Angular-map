@@ -1,5 +1,8 @@
+<div [ngClass]="showError ? 'class-that-doesnt-exists' : 'hide-content'">
+  Error!
+</div>
 <loading-spinner class="loading-spinner" [show]="showSpinner"></loading-spinner>
-<div [ngClass]="showSpinner ? 'hide-content' : 'show-content'">
+<div [ngClass]="showSpinner || showError ? 'hide-content' : 'show-content'">
   <app-filter-container
     class="filter-container"
     [isAvaliable]="avaliableFilterIsOn"
