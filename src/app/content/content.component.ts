@@ -20,9 +20,13 @@ export class ContentComponent implements OnInit {
   public sliderBatteryLevel: number = 0;
   public checkedVehicleType: string = 'ALL';
   public showError: boolean = false;
+  public errorMsg: string;
   @ViewChild('map') map: GoogleMap;
 
-  constructor(private vehicleService: VehicleMock, public dialog: MatDialog) {
+  constructor(
+    private vehicleService: VehiclesService,
+    public dialog: MatDialog
+  ) {
     this.vehicleService.getVehicles().subscribe(
       (vehicles: Vehicles) => {
         this.vehicles = vehicles;
@@ -33,6 +37,7 @@ export class ContentComponent implements OnInit {
       (error) => {
         this.showError = true;
         this.showSpinner = false;
+        this.errorMsg = error.message;
       }
     );
   }

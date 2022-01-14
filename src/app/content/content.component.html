@@ -1,5 +1,9 @@
-<div [ngClass]="showError ? 'class-that-doesnt-exists' : 'hide-content'">
-  Error!
+<div [ngClass]="showError ? 'error-message' : 'hide-content'">
+  <img height="450px" src="../../assets/error.png" />
+  <p>
+    Error occurred! <br />
+    Error message: {{ errorMsg }}
+  </p>
 </div>
 <loading-spinner class="loading-spinner" [show]="showSpinner"></loading-spinner>
 <div [ngClass]="showSpinner || showError ? 'hide-content' : 'show-content'">
