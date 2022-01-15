@@ -22,12 +22,8 @@
     (selectionChange)="checkVehicleType($event)"
     [(ngModel)]="vehicleType"
   >
-    <mat-option
-      *ngFor="let type of vehTypes"
-      [value]="type.value"
-      ngDefaultControl
-    >
-      {{ type.viewValue }}
+    <mat-option *ngFor="let type of vehTypes" [value]="type" ngDefaultControl>
+      {{ type }}
     </mat-option>
   </mat-select>
 </mat-form-field>

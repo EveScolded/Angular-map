@@ -21,38 +21,40 @@ export class ContentComponent implements OnInit {
   public checkedVehicleType: string = 'ALL';
   public showError: boolean = false;
   public errorMsg: string;
+  public uniqueVehTypes: string[];
   @ViewChild('map') map: GoogleMap;
 
-  constructor(
-    private vehicleService: VehiclesService,
-    public dialog: MatDialog
-  ) {
-    this.vehicleService.getVehicles().subscribe(
-      (vehicles: Vehicles) => {
+  constructor(private vehicleService: VehicleMock, public dialog: MatDialog) {
+    this.vehicleService.getVehicles().subscribe({
+      next: (vehicles: Vehicles) => {
         this.vehicles = vehicles;
+        this.uniqueVehTypes = [
+          ...new Set(vehicles.objects.map((item) => item.type)),
+        ];
+        this.uniqueVehTypes.unshift('ALL');
         this.addMarkers();
         this.setCenter();
         this.showSpinner = false;
       },
-      (error) => {
+      error: (error) => {
         this.showError = true;
         this.showSpinner = false;
         this.errorMsg = error.message;
-      }
-    );
+      },
+    });
   }
 
   markerClustererImagePath =
     'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m';
 
-  onFiltersChange(filters: Filters) {
+  public onFiltersChange(filters: Filters) {
     this.avaliableFilterIsOn = filters.isAvaliable;
     this.sliderBatteryLevel = filters.batteryLevel;
     this.checkedVehicleType = filters.vehicleType;
     this.addMarkers();
   }
 
-  addMarkers() {
+  public addMarkers() {
     this.markers = [];
     this.vehicles.objects.forEach((veh) => {
       if (
@@ -75,7 +77,7 @@ export class ContentComponent implements OnInit {
     });
   }
 
-  setCenter() {
+  public setCenter() {
     let bounds = new google.maps.LatLngBounds();
 
     for (let i = 0; i < this.markers.length; i++) {
@@ -92,7 +94,7 @@ export class ContentComponent implements OnInit {
     this.map.fitBounds(bounds);
   }
 
-  openDialog(veh: Vehicle) {
+  public openDialog(veh: Vehicle) {
     this.dialog.open(DialogDetailsComponent, {
       data: {
         vehicle: veh,
@@ -100,7 +102,7 @@ export class ContentComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.showSpinner = true;
   }
 }

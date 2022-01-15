@@ -17,12 +17,13 @@ interface VehTypes {
   styleUrls: ['./filter-container.component.scss'],
 })
 export class FilterContainerComponent implements OnInit {
-  @Input() isAvaliable!: boolean;
-  @Input() batteryLevel!: number;
-  @Input() vehicleType!: string;
+  isAvaliable: boolean = false;
+  batteryLevel: number = 0;
+  vehicleType: string = 'ALL';
+  @Input() vehTypes: string[];
   @Output() onFiltersChange = new EventEmitter<Filters>();
 
-  checkAvaliability() {
+  public checkAvaliability() {
     this.onFiltersChange.emit({
       isAvaliable: (this.isAvaliable = !this.isAvaliable),
       batteryLevel: this.batteryLevel,
@@ -30,7 +31,7 @@ export class FilterContainerComponent implements OnInit {
     });
   }
 
-  checkBatteryLevel() {
+  public checkBatteryLevel() {
     this.onFiltersChange.emit({
       batteryLevel: this.batteryLevel,
       isAvaliable: this.isAvaliable,
@@ -38,7 +39,7 @@ export class FilterContainerComponent implements OnInit {
     });
   }
 
-  checkVehicleType(event: any) {
+  public checkVehicleType(event: any) {
     this.onFiltersChange.emit({
       batteryLevel: this.batteryLevel,
       isAvaliable: this.isAvaliable,
@@ -46,17 +47,9 @@ export class FilterContainerComponent implements OnInit {
     });
   }
 
-  vehTypes: VehTypes[] = [
-    { value: 'ALL', viewValue: 'all' },
-    { value: 'TRUCK', viewValue: 'truck' },
-    { value: 'CAR', viewValue: 'car' },
-  ];
-
-  formatLabel(value: number) {
+  public formatLabel(value: number) {
     return value + '%';
   }
-
-  constructor() {}
 
   ngOnInit(): void {}
 }

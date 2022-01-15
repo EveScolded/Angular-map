@@ -9,9 +9,7 @@
 <div [ngClass]="showSpinner || showError ? 'hide-content' : 'show-content'">
   <app-filter-container
     class="filter-container"
-    [isAvaliable]="avaliableFilterIsOn"
-    [batteryLevel]="sliderBatteryLevel"
-    [vehicleType]="checkedVehicleType"
+    [vehTypes]="uniqueVehTypes"
     (onFiltersChange)="onFiltersChange($event)"
   ></app-filter-container>
 
