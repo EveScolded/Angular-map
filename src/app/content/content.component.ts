@@ -72,8 +72,8 @@ export class ContentComponent implements OnInit {
           },
           iconColor:
             veh.status === 'AVAILABLE'
-              ? '../assets/car-green64x64.png'
-              : '../assets/car-grayscale64x64.png',
+              ? 'assets/car-green64x64.png'
+              : 'assets/car-grayscale64x64.png',
         });
       }
     });
