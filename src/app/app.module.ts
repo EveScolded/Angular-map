@@ -18,6 +18,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     DialogDetailsComponent,
     LoadingSpinnerComponent,
     FilterContainerComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,

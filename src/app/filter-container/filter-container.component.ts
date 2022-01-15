@@ -5,12 +5,6 @@ export interface Filters {
   batteryLevel: number;
   vehicleType: string;
 }
-
-interface VehTypes {
-  value: string;
-  viewValue: string;
-}
-
 @Component({
   selector: 'app-filter-container',
   templateUrl: './filter-container.component.html',

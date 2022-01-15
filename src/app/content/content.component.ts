@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Vehicle, Vehicles } from '../vehicles/vehicles';
-import { VehicleMock } from '../vehicles/vehicles.mock';
 import { VehiclesService } from '../vehicles/vehicles.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogDetailsComponent } from '../dialog-details/dialog-details.component';
@@ -24,7 +23,10 @@ export class ContentComponent implements OnInit {
   public uniqueVehTypes: string[];
   @ViewChild('map') map: GoogleMap;
 
-  constructor(private vehicleService: VehicleMock, public dialog: MatDialog) {
+  constructor(
+    private vehicleService: VehiclesService,
+    public dialog: MatDialog
+  ) {
     this.vehicleService.getVehicles().subscribe({
       next: (vehicles: Vehicles) => {
         this.vehicles = vehicles;
