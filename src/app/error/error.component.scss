@@ -1,4 +1,4 @@
-.error-message {
+uy7.yuhjerror-message {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -6,11 +6,16 @@
   justify-content: center;
   color: red;
   height: 100%;
-  background-color: black;
+  background-color: #3e3e3e;
   font-size: 24px;
   line-height: 34px;
 }
 
 .hide-content {
   display: none;
+}
+
+a {
+  color: #f77c26;
+  text-decoration: none;
 }
