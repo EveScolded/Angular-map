@@ -70,13 +70,16 @@ export class ContentComponent implements OnInit {
             lat: veh.location.latitude,
             lng: veh.location.longitude,
           },
-          iconColor:
-            veh.status === 'AVAILABLE'
-              ? 'assets/car-green64x64.png'
-              : 'assets/car-grayscale64x64.png',
+          iconColor: this.getVehicleIcon(veh),
         });
       }
     });
+  }
+
+  private getVehicleIcon(veh: Vehicle) {
+    return veh.status === 'AVAILABLE'
+      ? 'assets/car-green64x64.png'
+      : 'assets/car-grayscale64x64.png';
   }
 
   public setCenter() {
